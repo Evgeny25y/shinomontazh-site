@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ШИНОМОНТАЖ — Макет сайта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 3rem 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        h1 span {
+            color: #e63946;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .mockup-frame {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .mockup-frame:hover {
+            transform: translateY(-10px);
+        }
+
+        .device-label {
+            background: #0a0a0a;
+            color: #e63946;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .frame-content {
+            height: 800px;
+            overflow: hidden;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .frame-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0a0a0a;
+        }
+
+        /* Desktop Frame */
+        .desktop-frame {
+            border: 40px solid #2a2a2a;
+            border-radius: 30px;
+            background: #1a1a1a;
+            box-shadow:
+                0 0 0 2px #3a3a3a,
+                0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .desktop-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 20px;
+            background: #2a2a2a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .desktop-frame .frame-content {
+            height: 600px;
+        }
+
+        /* Mobile Frame */
+        .mobile-frame {
+            border: 12px solid #2a2a2a;
+            border-radius: 40px;
+            background: #1a1a1a;
+            box-shadow:
+                0 0 0 2px #3a3a3a,
+                0 20px 60px rgba(0, 0, 0, 0.5);
+            width: 375px;
+            margin: 0 auto;
+        }
+
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #2a2a2a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .mobile-frame .frame-content {
+            height: 812px;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(230, 57, 70, 0.1);
+            border: 2px solid #e63946;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .features h2 {
+            color: #ffffff;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(10, 10, 10, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid #e63946;
+        }
+
+        .feature-item h3 {
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .link-card {
+            background: rgba(230, 57, 70, 0.15);
+            border: 1px solid #e63946;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .link-card:hover {
+            background: rgba(230, 57, 70, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .link-card h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .link-card a {
+            display: inline-block;
+            background: #e63946;
+            color: #0a0a0a;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .link-card a:hover {
+            background: #d62828;
+            transform: scale(1.05);
+        }
+
+        .specs {
+            background: rgba(192, 192, 192, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .specs h3 {
+            color: #e63946;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .spec-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            margin: 1rem 0;
+            color: #c0c0c0;
+        }
+
+        .spec-label {
+            font-weight: 700;
+            color: #e63946;
+        }
+
+        @media (max-width: 1024px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .desktop-frame {
+                border: 20px solid #2a2a2a;
+            }
+
+            .mobile-frame {
+                width: 100%;
+                max-width: 375px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ШИНОМОНТАЖ — <span>Макет сайта</span></h1>
+
+        <!-- Mockup Frames -->
+        <div class="mockup-grid">
+            <!-- Desktop Version -->
+            <div>
+                <div class="device-label">💻 ДЕСКТОПНАЯ ВЕРСИЯ</div>
+                <div class="mockup-frame desktop-frame">
+                    <div class="frame-content">
+                        <img src="shino-desktop.webp" alt="Десктопная версия сайта">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Version -->
+            <div style="display: flex; justify-content: center;">
+                <div style="width: 100%; max-width: 375px;">
+                    <div class="device-label">📱 МОБИЛЬНАЯ ВЕРСИЯ</div>
+                    <div class="mockup-frame mobile-frame">
+                        <div class="frame-content">
+                            <img src="shino-mobile.webp" alt="Мобильная версия сайта">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h2>✨ Ключевые особенности</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>🎨 Современный дизайн</h3>
+                    <p>Чёрный фон с красными акцентами, профессиональный и привлекательный вид</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📱 Отзывчивость</h3>
+                    <p>Идеально работает на всех устройствах: десктоп, планшет, смартфон</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Быстрая загрузка</h3>
+                    <p>Оптимизированные WebP изображения и минимальный JavaScript</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎯 Конверсия</h3>
+                    <p>Удобная форма записи на услугу и чёткий призыв к действию</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📍 Структурированность</h3>
+                    <p>Логичная структура: герой → услуги → преимущества → контакты</p>
+                </div>
+                <div class="feature-item">
+                    <h3>♿ Доступность</h3>
+                    <p>Правильная семантика HTML и хороший контраст для читаемости</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="specs">
+            <h3>📊 Технические характеристики</h3>
+
+            <div class="spec-row">
+                <span class="spec-label">Язык:</span>
+                <span>HTML5, CSS3, Vanilla JavaScript</span>
+            </div>
+
+            <div class="spec-row">
+                <span class="spec-label">Адаптивность:</span>
+                <span>Mobile-first, медиа-запросы для всех размеров экранов</span>
+            </div>
+
+            <div class="spec-row">
+                <span class="spec-label">Изображения:</span>
+                <span>WebP формат (оптимизированно для скорости)</span>
+            </div>
+
+            <div class="spec-row">
+                <span class="spec-label">Совместимость:</span>
+                <span>Chrome, Firefox, Safari, Edge (все современные браузеры)</span>
+            </div>
+
+            <div class="spec-row">
+                <span class="spec-label">Разделы:</span>
+                <span>Герой, услуги (2x2), преимущества (2x2), контакты, форма записи</span>
+            </div>
+
+            <div class="spec-row">
+                <span class="spec-label">Размер:</span>
+                <span>~20KB HTML + ~400KB изображений (сжаты в WebP)</span>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="links">
+            <div class="link-card">
+                <h3>🌐 Живой сайт</h3>
+                <p>Посмотри полный сайт на GitHub Pages</p>
+                <a href="https://evgeny25y.github.io/shinomontazh-site/" target="_blank">Открыть сайт →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>💻 Исходный код</h3>
+                <p>Все файлы на GitHub, готовы к использованию</p>
+                <a href="https://github.com/Evgeny25y/shinomontazh-site" target="_blank">GitHub репозиторий →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>🎨 Артефакт Claude</h3>
+                <p>Интерактивный мокап в Claude AI</p>
+                <a href="https://claude.ai/artifact/HxxcQmzLVFMWUkcmyerkaS" target="_blank">Открыть мокап →</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e63946; color: #c0c0c0;">
+            <p>Создано с помощью Claude Haiku 4.5</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">© 2026 ШИНОМОНТАЖ</p>
+        </div>
+    </div>
+</body>
+</html>
