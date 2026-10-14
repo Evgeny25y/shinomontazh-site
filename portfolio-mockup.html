@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лендинг «Шиномонтаж» — Портфолио мокап</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        /* Card Header with Title */
+        .card-header {
+            background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .card-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Mockup Content */
+        .mockup-content {
+            padding: 3rem 2rem;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .device-container {
+            position: relative;
+        }
+
+        .device-label {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Desktop Frame */
+        .desktop-frame {
+            background: #2a2a2a;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .desktop-frame::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 12px;
+            background: #2a2a2a;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .desktop-frame::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .frame-content {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .frame-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .frame-footer {
+            height: 12px;
+            background: #2a2a2a;
+            border-radius: 6px;
+        }
+
+        /* Mobile Frame */
+        .mobile-frame {
+            background: #2a2a2a;
+            border-radius: 35px;
+            padding: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 25px;
+            background: #2a2a2a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .mobile-frame::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .mobile-frame .frame-content {
+            border-radius: 25px;
+            margin: 0;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: rgba(230, 57, 70, 0.08);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(230, 57, 70, 0.2);
+            margin-top: 2rem;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            color: #e63946;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e63946;
+        }
+
+        .info-item-title {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .card-footer {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(230, 57, 70, 0.1);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .footer-link:hover {
+            background: rgba(230, 57, 70, 0.2);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .portfolio-card {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                font-size: 2rem;
+            }
+
+            .mockup-content {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Export as Image */
+        .export-info {
+            background: rgba(230, 57, 70, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(230, 57, 70, 0.3);
+            text-align: center;
+        }
+
+        .export-info p {
+            color: #333;
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+        }
+
+        .export-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #e63946;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .export-button:hover {
+            background: #d62828;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="export-info">
+            <p>💡 Совет: Используйте инструменты браузера для сохранения как изображение (Print → Save as PDF или скриншот)</p>
+            <p>Или откройте DevTools (F12) → инструмент для снятия скриншотов страницы</p>
+        </div>
+
+        <div class="portfolio-card" id="portfolio-card">
+            <!-- Header -->
+            <div class="card-header">
+                <div class="card-title">ЛЕНДИНГ</div>
+                <div class="card-subtitle">«ШИНОМОНТАЖ»</div>
+                <div class="card-meta">
+                    <div class="meta-badge">💻 Веб-дизайн</div>
+                    <div class="meta-badge">📱 Отзывчивый</div>
+                    <div class="meta-badge">⚡ HTML5/CSS3</div>
+                    <div class="meta-badge">🚀 GitHub Pages</div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="mockup-content">
+                <div class="mockup-grid">
+                    <!-- Desktop Version -->
+                    <div class="device-container">
+                        <div class="device-label">💻 Десктопная версия</div>
+                        <div class="desktop-frame">
+                            <div class="frame-content">
+                                <img src="shino-desktop.webp" alt="Десктопная версия" class="frame-image">
+                            </div>
+                            <div class="frame-footer"></div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Version -->
+                    <div class="device-container">
+                        <div class="device-label">📱 Мобильная версия</div>
+                        <div class="mobile-frame">
+                            <div class="frame-content">
+                                <img src="shino-mobile.webp" alt="Мобильная версия" class="frame-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Section -->
+                <div class="info-section">
+                    <div class="info-title">✨ Основные возможности</div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-item-title">🎨 Современный дизайн</div>
+                            <div class="info-item-text">Чёрный фон, красные акценты, профессиональный и привлекательный вид</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">📱 Адаптивность</div>
+                            <div class="info-item-text">100% отзывчивый дизайн, работает идеально на всех устройствах</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">⚡ Производительность</div>
+                            <div class="info-item-text">Оптимизированные WebP изображения, быстрая загрузка, Lighthouse 90+</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">🎯 Конверсия</div>
+                            <div class="info-item-text">Форма записи на услугу, чёткие CTA, логичная структура</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">🔍 SEO</div>
+                            <div class="info-item-text">Семантический HTML5, правильная структура, мета-теги</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-title">🚀 Готовый к использованию</div>
+                            <div class="info-item-text">Не нужна доработка, сразу можно использовать на продакшене</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="card-footer">
+                <div class="footer-text">Все файлы доступны на GitHub с открытым исходным кодом</div>
+                <div class="footer-links">
+                    <a href="https://evgeny25y.github.io/shinomontazh-site/" class="footer-link" target="_blank">🌐 Живой сайт</a>
+                    <a href="https://github.com/Evgeny25y/shinomontazh-site" class="footer-link" target="_blank">💻 GitHub</a>
+                    <a href="https://claude.ai/artifact/HxxcQmzLVFMWUkcmyerkaS" class="footer-link" target="_blank">🎨 Интерактивный мокап</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Простой скрипт для скриншота через html2canvas (если доступен)
+        function takeScreenshot() {
+            if (typeof html2canvas !== 'undefined') {
+                html2canvas(document.getElementById('portfolio-card')).then(canvas => {
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = 'shinomontazh-portfolio.png';
+                    link.click();
+                });
+            } else {
+                alert('Используйте встроенный скриншот браузера:\n\n' +
+                      '1. Нажмите F12 для открытия DevTools\n' +
+                      '2. Нажмите Ctrl+Shift+P (Cmd+Shift+P на Mac)\n' +
+                      '3. Введите "screenshot" и выберите нужный вариант\n' +
+                      '4. Или просто нажмите PrintScreen и вставьте в графический редактор');
+            }
+        }
+    </script>
+</body>
+</html>
