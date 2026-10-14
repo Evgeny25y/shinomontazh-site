@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лендинг «Шиномонтаж» — Макет</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f2ed 0%, #e8e5e0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #c85a54;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            word-spacing: 3px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: #c85a54;
+            margin: 0 auto 3rem;
+        }
+
+        /* Mockup Container */
+        .mockup-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: -100px;
+            margin-bottom: 4rem;
+        }
+
+        /* Laptop Frame */
+        .laptop-wrapper {
+            position: relative;
+            z-index: 2;
+            flex: 0 0 auto;
+        }
+
+        .laptop {
+            background: #000;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+            position: relative;
+            width: 580px;
+            height: 380px;
+        }
+
+        .laptop::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 12px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .laptop::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: #1a1a1a;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .laptop-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .laptop-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Phone Frame */
+        .phone-wrapper {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .phone {
+            background: #000;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            width: 280px;
+            height: 570px;
+        }
+
+        .phone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 25px 25px;
+            z-index: 10;
+        }
+
+        .phone::after {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2.5px;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Features */
+        .features {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+
+            .laptop {
+                width: 450px;
+                height: 300px;
+            }
+
+            .phone {
+                width: 240px;
+                height: 490px;
+            }
+
+            .phone-wrapper {
+                right: -50px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .mockup-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .phone-wrapper {
+                position: relative;
+                transform: none;
+                margin-top: -100px;
+            }
+
+            .laptop {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                margin-top: 3rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="tagline">ОДНОСТРАДНИЧНЫЙ САЙТ · АДАПТИВ ПОД ТЕЛЕФОН</div>
+            <h1 class="main-title">Лендинг «Шиномонтаж»</h1>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Mockup -->
+        <div class="mockup-container">
+            <!-- Laptop -->
+            <div class="laptop-wrapper">
+                <div class="laptop">
+                    <div class="laptop-screen">
+                        <img src="shino-desktop.webp" alt="Десктопная версия сайта шиномонтажа">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="phone-wrapper">
+                <div class="phone">
+                    <div class="phone-screen">
+                        <img src="shino-mobile.webp" alt="Мобильная версия сайта шиномонтажа">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Быстрая загрузка</div>
+                <div class="feature-text">Оптимизированные WebP изображения и минимум кода</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Полная адаптивность</div>
+                <div class="feature-text">Идеально работает на всех устройствах и экранах</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">Современный дизайн</div>
+                <div class="feature-text">Профессиональный вид, красные акценты, чёрный фон</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
