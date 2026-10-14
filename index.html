@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ШИНОМОНТАЖ — Профессиональное обслуживание шин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --accent-red: #e63946;
+            --accent-red-hover: #d62828;
+            --text-white: #ffffff;
+            --text-gray: #c0c0c0;
+            --text-gray-light: #808080;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--accent-red);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            text-align: center;
+            border-bottom: 2px solid var(--accent-red);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: none;
+            order: -1;
+        }
+
+        .hero-image.desktop {
+            display: none;
+        }
+
+        .hero-image.mobile {
+            display: block;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-image.desktop {
+                display: block;
+                max-height: 500px;
+            }
+            .hero-image.mobile {
+                display: none;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-red) 0%, transparent 70%);
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-item strong {
+            color: var(--accent-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item span {
+            color: var(--text-gray-light);
+            font-size: 0.9rem;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--bg-dark);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        .cta-primary:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--accent-red);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 6rem 2rem;
+            border-top: 2px solid var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .why-us-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-us h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .reason {
+            padding: 2rem;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .reason h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-red);
+        }
+
+        .reason p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item strong {
+            color: var(--accent-red);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Form */
+        .contact-form {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-red);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 6px;
+            color: var(--text-white);
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-red);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--accent-red);
+            color: var(--text-gray-light);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-features {
+                gap: 1.5rem;
+            }
+
+            .services {
+                padding: 3rem 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .service-card {
+                animation: fadeInUp 0.6s ease-out;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">ШИ<span>НО</span>МОНТАЖ</div>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#why">О нас</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="shino-desktop.webp" alt="Профессиональный шиномонтаж" class="hero-image desktop">
+        <img src="shino-mobile.webp" alt="Профессиональный шиномонтаж" class="hero-image mobile">
+        <div class="hero-content">
+            <h1>Профессиональный<br><span>ШИНОМОНТАЖ</span></h1>
+            <p class="hero-subtitle">БЫСТРО • КАЧЕСТВЕННО • НАДЁЖНО</p>
+
+            <div class="hero-features">
+                <div class="feature-item">
+                    <strong>Опыт</strong>
+                    <span>10+ лет на рынке</span>
+                </div>
+                <div class="feature-item">
+                    <strong>Скорость</strong>
+                    <span>Замена за 20 минут</span>
+                </div>
+                <div class="feature-item">
+                    <strong>Качество</strong>
+                    <span>Профессиональный сервис</span>
+                </div>
+            </div>
+
+            <button class="cta-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                ЗАПИСАТЬСЯ →
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Наши <span>услуги</span></h2>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔄</div>
+                <h3>Замена шин</h3>
+                <p>Профессиональная замена летних и зимних шин с гарантией качества и точностью выполнения</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚖️</div>
+                <h3>Балансировка колёс</h3>
+                <p>Точная компьютеризированная балансировка для улучшения комфорта и безопасности вождения</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Ремонт шин</h3>
+                <p>Восстановление повреждённых шин опытными мастерами с использованием современных материалов</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>Сезонное хранение</h3>
+                <p>Безопасное хранение ваших шин в климатизированном помещении в межсезонье</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why">
+        <div class="why-us-content">
+            <h2 class="section-title">Почему выбирают <span>нас</span></h2>
+
+            <div class="why-us-grid">
+                <div class="reason">
+                    <h3>Современное оборудование</h3>
+                    <p>Используем только профессиональное оборудование и инструменты ведущих производителей</p>
+                </div>
+                <div class="reason">
+                    <h3>Команда профессионалов</h3>
+                    <p>Наши мастера имеют сертификаты и регулярно повышают квалификацию</p>
+                </div>
+                <div class="reason">
+                    <h3>Справедливые цены</h3>
+                    <p>Честное ценообразование без скрытых платежей и необоснованных надбавок</p>
+                </div>
+                <div class="reason">
+                    <h3>Гарантия качества</h3>
+                    <p>Даём гарантию на все выполненные работы и использованные материалы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Свяжитесь <span style="color: var(--accent-red);">с нами</span></h2>
+
+                <div class="contact-item">
+                    <strong>📞 Телефон</strong>
+                    <p>+7 (999) 123-45-67</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>📍 Адрес</strong>
+                    <p>ул. Мастеров, д. 42<br>Пн-Пт: 09:00-19:00<br>Сб-Вс: 09:00-17:00</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>💬 Соцсети</strong>
+                    <p>Мы в ВКонтакте и Яндекс.Карты</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Записаться на услугу</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" placeholder="Иван Петров" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Услуга</label>
+                        <input type="text" id="service" placeholder="Замена шин / Балансировка">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Удобное время</label>
+                        <input type="datetime-local" id="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Комментарий (опционально)</label>
+                        <textarea id="message" placeholder="Описание вашего автомобиля или вопроса"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit">Отправить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ШИНОМОНТАЖ. Все права защищены.</p>
+    </footer>
+</body>
+</html>
