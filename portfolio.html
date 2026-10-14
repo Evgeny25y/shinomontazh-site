@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ШИНОМОНТАЖ — Портфолио проекта для биржи фриланса</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 3px solid #e63946;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        h1 span {
+            color: #e63946;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            background: rgba(230, 57, 70, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid #e63946;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            color: #e63946;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .showcase h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #e63946;
+        }
+
+        .devices-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .device-frame {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .device-title {
+            background: linear-gradient(90deg, #e63946 0%, #d62828 100%);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .frame-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .device-specs {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-top: 1px solid rgba(230, 57, 70, 0.2);
+        }
+
+        .specs-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(230, 57, 70, 0.1);
+        }
+
+        .specs-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: #e63946;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            color: #b0b0b0;
+        }
+
+        /* Features Section */
+        .features-section {
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .features-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #e63946;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(230, 57, 70, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e63946;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(230, 57, 70, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #e63946;
+        }
+
+        .feature-text {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .tech-stack h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #e63946;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.2) 0%, rgba(230, 57, 70, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .tech-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-desc {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        /* Deliverables */
+        .deliverables {
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .deliverables h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #e63946;
+        }
+
+        .deliverables-list {
+            list-style: none;
+        }
+
+        .deliverables-list li {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .deliverables-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverables-list li::before {
+            content: '✓';
+            color: #e63946;
+            font-weight: 700;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Links Section */
+        .links-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .links-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #e63946;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            background: linear-gradient(90deg, #e63946 0%, #d62828 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid #e63946;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #e63946;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(230, 57, 70, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(230, 57, 70, 0.3);
+            color: #b0b0b0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .devices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-meta {
+                flex-direction: column;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>ШИНОМОНТАЖ<br><span>Профессиональный веб-сайт</span></h1>
+            <p class="subtitle">Полнофункциональный отзывчивый сайт для шиномонтажного сервиса</p>
+
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Тип проекта</div>
+                    <div class="meta-value">Веб-дизайн & Разработка</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Статус</div>
+                    <div class="meta-value">✓ Завершен</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Платформа</div>
+                    <div class="meta-value">HTML5 / CSS3</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Showcase -->
+        <section class="showcase">
+            <h2>📱 Визуальный результат</h2>
+            <div class="devices-grid">
+                <!-- Desktop -->
+                <div class="device-frame">
+                    <div class="device-title">💻 Десктопная версия</div>
+                    <img src="shino-desktop.webp" alt="Десктопная версия" class="frame-image">
+                    <div class="device-specs">
+                        <div class="specs-row">
+                            <span class="spec-label">Ширина:</span>
+                            <span class="spec-value">1200px+</span>
+                        </div>
+                        <div class="specs-row">
+                            <span class="spec-label">Колонки:</span>
+                            <span class="spec-value">2 для услуг и преимуществ</span>
+                        </div>
+                        <div class="specs-row">
+                            <span class="spec-label">Фото:</span>
+                            <span class="spec-value">Горизонтальное (16:9)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="device-frame">
+                    <div class="device-title">📱 Мобильная версия</div>
+                    <img src="shino-mobile.webp" alt="Мобильная версия" class="frame-image">
+                    <div class="device-specs">
+                        <div class="specs-row">
+                            <span class="spec-label">Ширина:</span>
+                            <span class="spec-value">375px (iPhone)</span>
+                        </div>
+                        <div class="specs-row">
+                            <span class="spec-label">Колонки:</span>
+                            <span class="spec-value">1 для удобства</span>
+                        </div>
+                        <div class="specs-row">
+                            <span class="spec-label">Фото:</span>
+                            <span class="spec-value">Вертикальное (9:16)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features-section">
+            <h2>✨ Ключевые особенности</h2>
+            <div class="features-list">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">Современный дизайн</div>
+                    <div class="feature-text">Чёрный фон, красные акценты, профессиональный вид, привлекает внимание</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Полная отзывчивость</div>
+                    <div class="feature-text">Идеально адаптируется к любым размерам экранов (мобильные, планшеты, десктоп)</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Быстрая загрузка</div>
+                    <div class="feature-text">Оптимизированные WebP изображения, минимум JavaScript, быстрая работа</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Высокая конверсия</div>
+                    <div class="feature-text">Удобная форма записи на услугу, чёткие CTA кнопки, логичная структура</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-title">SEO-оптимизирован</div>
+                    <div class="feature-text">Правильная семантика HTML5, чистая структура, мета-теги, доступность</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <div class="feature-title">Доступность</div>
+                    <div class="feature-text">Хороший контраст, читаемые шрифты, логичная навигация, фокусные индикаторы</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-stack">
+            <h2>🛠️ Технологии</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-name">HTML5</div>
+                    <div class="tech-desc">Семантическая разметка, правильная структура</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-name">CSS3</div>
+                    <div class="tech-desc">Флекс-макеты, медиа-запросы, анимации, переходы</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-name">Ванильный JS</div>
+                    <div class="tech-desc">Лёгкая интерактивность, плавная прокрутка</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-name">WebP</div>
+                    <div class="tech-desc">Оптимизированные изображения, быстрая загрузка</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-name">GitHub Pages</div>
+                    <div class="tech-desc">Бесплатный хостинг, CI/CD, версионирование</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-name">Мобильный-first</div>
+                    <div class="tech-desc">Сначала адаптируем под мобильный, потом для больших экранов</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section class="deliverables">
+            <h2>📦 Что вы получаете</h2>
+            <ul class="deliverables-list">
+                <li>Готовый к использованию HTML файл (index.html)</li>
+                <li>Оптимизированные WebP изображения (десктоп и мобильная версии)</li>
+                <li>Полностью отзывчивая версия (работает на всех устройствах)</li>
+                <li>Форма записи на услугу (готова к интеграции с backend)</li>
+                <li>README с описанием проекта и инструкциями</li>
+                <li>Исходный код на GitHub (открытый доступ)</li>
+                <li>Страница макета с визуализацией фреймов устройств</li>
+                <li>Уже опубликовано на GitHub Pages (готово к использованию)</li>
+                <li>SEO-оптимизированная структура</li>
+                <li>Кросс-браузерная совместимость (Chrome, Firefox, Safari, Edge)</li>
+            </ul>
+        </section>
+
+        <!-- Links -->
+        <section class="links-section">
+            <h2>🔗 Ссылки проекта</h2>
+            <p style="margin-bottom: 2rem; color: #b0b0b0;">Все файлы открыты и готовы к использованию</p>
+
+            <a href="https://evgeny25y.github.io/shinomontazh-site/" class="btn" target="_blank">
+                🌐 Посмотреть живой сайт
+            </a>
+
+            <a href="https://github.com/Evgeny25y/shinomontazh-site" class="btn" target="_blank">
+                💻 Исходный код на GitHub
+            </a>
+
+            <a href="https://claude.ai/artifact/HxxcQmzLVFMWUkcmyerkaS" class="btn" target="_blank">
+                🎨 Интерактивный мокап
+            </a>
+
+            <a href="https://evgeny25y.github.io/shinomontazh-site/mockup.html" class="btn btn-secondary" target="_blank">
+                📐 Макет с фреймами
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Проект создан с использованием Claude Haiku 4.5</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Готово к загрузке на биржи фриланса (Upwork, Fiverr, Kwork и др.)</p>
+        </footer>
+    </div>
+</body>
+</html>
